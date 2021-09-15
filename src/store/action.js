@@ -93,7 +93,7 @@ export const updateTodoFailure = (err) => ({
 export const getData = () => async (dispatch) => {
   dispatch(getTodoRequest());
   try {
-    const { data } = await axios.get(`http://localhost:3001/todo`);
+    const { data } = await axios.get(`https://vaibhav-api-data.herokuapp.com/todo`);
     dispatch(getTodoSuccess(data));
   } catch (error) {
     dispatch(getTodoFailure(error));
@@ -102,7 +102,7 @@ export const getData = () => async (dispatch) => {
 export const getSingleData = (payload) => async (dispatch) => {
   dispatch(getTodoItemRequest());
   try {
-    const { data } = await axios.get(`http://localhost:3001/todo/${payload}`);
+    const { data } = await axios.get(`https://vaibhav-api-data.herokuapp.com/todo/${payload}`);
     dispatch(getTodoItemSuccess(data));
   } catch (error) {
     dispatch(getTodoItemFailure(error));
@@ -112,7 +112,7 @@ export const getSingleData = (payload) => async (dispatch) => {
 export const addTodo = (payload) => async (dispatch) => {
   dispatch(addTodoRequest());
   try {
-    const { data } = await axios.post(`http://localhost:3001/todo`, payload);
+    const { data } = await axios.post(`https://vaibhav-api-data.herokuapp.com/todo`, payload);
     dispatch(addTodoSuccess(data));
   } catch (error) {
     dispatch(addTodoFailure(error));
@@ -123,7 +123,7 @@ export const deleteTodo = (payload) => async (dispatch) => {
   dispatch(deleteTodoRequest());
   try {
     const { data } = await axios.delete(
-      `http://localhost:3001/todo/${payload.id}`
+      `https://vaibhav-api-data.herokuapp.com/todo/${payload.id}`
     );
     dispatch(deleteTodoSuccess());
   } catch (error) {
@@ -138,14 +138,14 @@ export const toggleTodo = (payload) => async (dispatch) => {
   dispatch(toggleTodoRequest());
   try {
     const { data } = await axios.patch(
-      `http://localhost:3001/todo/${payload.id}`,
+      `https://vaibhav-api-data.herokuapp.com/todo/${payload.id}`,
       { ...payload, status: !payload.status }
     );
     dispatch(toggleTodoSuccess(data));
   } catch (error) {
     dispatch(toggleTodoFailure(error));
   }
-  axios.get(`http://localhost:3001/todo`).then((response) => {
+  axios.get(`https://vaibhav-api-data.herokuapp.com/todo`).then((response) => {
     dispatch(getTodoSuccess(response.data));
   });
 };
@@ -154,14 +154,14 @@ export const updateTodo = (payload, value) => async (dispatch) => {
   dispatch(updateTodoRequest());
   try {
     let { data } = await axios.patch(
-      `http://localhost:3001/todo/${payload.id}`,
+      `https://vaibhav-api-data.herokuapp.com/todo/${payload.id}`,
       { ...payload, title: value }
     );
     dispatch(updateTodoSuccess(data));
   } catch (error) {
     dispatch(updateTodoFailure(error));
   }
-  axios.get(`http://localhost:3001/todo`).then((response) => {
+  axios.get(`https://vaibhav-api-data.herokuapp.com/todo`).then((response) => {
     dispatch(getTodoSuccess(response.data));
   });
 };
