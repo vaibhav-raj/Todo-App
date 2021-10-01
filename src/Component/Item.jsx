@@ -70,8 +70,7 @@ const Item = () => {
             size="large"
             className={classes.deleteTodo}
             onClick={() => handleDelete(todo)}
-            startIcon={<DeleteForeverIcon />}
-          >
+            startIcon={<DeleteForeverIcon />}>
             DELETE
           </Button>
           <Button className={classes.editTodo} startIcon={<EditIcon/>} variant="outlined" color="primary" size="large" onClick={handleOpen} >
